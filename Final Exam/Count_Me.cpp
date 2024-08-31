@@ -6,7 +6,6 @@ int main()
     int t;
     cin >> t;
     cin.ignore();
-
     while (t--)
     {
         string sentence;
@@ -14,32 +13,20 @@ int main()
         string word;
         stringstream ss(sentence);
         map<string, int> mp;
-
+        int count = 0;
+        string wrd;
         while (ss >> word)
         {
             mp[word]++;
-        }
-
-        int count = 0;
-        for (auto it = mp.begin(); it != mp.end(); it++)
-        {
-            if (it->second > count)
+            if (mp[word] > count)
             {
-                count = it->second;
+                count = mp[word];
+                wrd = word;
             }
         }
-        stringstream st(sentence);
-        string wrd;
-        map<string, int> mt;
-        while (st >> wrd)
-        {
-            mt[wrd]++;
 
-            if (mt[wrd] == count)
-            {
-                cout << wrd << " " << count << endl;
-                break;
-            }
-        }
+        cout << wrd << " " << count << endl;
     }
+
+    return 0;
 }
