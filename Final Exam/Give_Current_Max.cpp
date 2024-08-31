@@ -74,11 +74,7 @@ int main()
         }
         else if (c == 2)
         {
-            if (pq.empty())
-            {
-                cout << "Empty" << endl;
-            }
-            else
+            if (!pq.empty())
             {
                 pq.pop();
 
@@ -90,6 +86,10 @@ int main()
                 {
                     cout << "Empty" << endl;
                 }
+            }
+            else
+            {
+                cout << "Empty" << endl;
             }
         }
     }
