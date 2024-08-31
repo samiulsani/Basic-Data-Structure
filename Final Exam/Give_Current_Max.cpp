@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class student
 {
 public:
@@ -13,7 +14,7 @@ public:
         this->marks = marks;
     }
 };
-class custom_cmp
+class cmp
 {
 public:
     bool operator()(student a, student b)
@@ -36,7 +37,7 @@ int main()
 {
     int n;
     cin >> n;
-    priority_queue<student, vector<student>, custom_cmp> pq;
+    priority_queue<student, vector<student>, cmp> pq;
     for (int i = 0; i < n; i++)
     {
         string name;
@@ -49,9 +50,9 @@ int main()
     cin >> q;
     while (q--)
     {
-        int cmd;
-        cin >> cmd;
-        if (cmd == 0)
+        int c;
+        cin >> c;
+        if (c == 0)
         {
             string name;
             int roll, marks;
@@ -60,24 +61,35 @@ int main()
             pq.push(obj);
             cout << pq.top().name << " " << pq.top().roll << " " << pq.top().marks << endl;
         }
-        else if (cmd == 1)
+        else if (c == 1)
         {
             if (!pq.empty())
+            {
                 cout << pq.top().name << " " << pq.top().roll << " " << pq.top().marks << endl;
+            }
             else
+            {
                 cout << "Empty" << endl;
+            }
         }
-        else if (cmd == 2)
+        else if (c == 2)
         {
             if (pq.empty())
+            {
                 cout << "Empty" << endl;
+            }
             else
             {
                 pq.pop();
+
                 if (!pq.empty())
+                {
                     cout << pq.top().name << " " << pq.top().roll << " " << pq.top().marks << endl;
+                }
                 else
+                {
                     cout << "Empty" << endl;
+                }
             }
         }
     }
