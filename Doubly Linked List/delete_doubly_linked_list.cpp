@@ -114,23 +114,32 @@ void delete_at_position(Node *head, int pos)
     delete deleteNode;
 }
 
-//Delete at tail
-void delete_at_tail(Node*&tail)
+// Delete at tail
+void delete_at_tail(Node *&head, Node *&tail)
 {
-    Node*deleteNode=tail;
-    tail=tail->prev;
+    Node *deleteNode = tail;
+    tail = tail->prev;
     delete deleteNode;
-    tail->next=NULL;
+    if (tail == NULL)
+    {
+        head = NULL;
+        return;
+    }
+    tail->next = NULL;
 }
 
-
-//Delete at head
-void delete_at_head(Node*&head)
+// Delete at head
+void delete_at_head(Node *&head, Node *&tail)
 {
-    Node*deleteNode=head;
-    head=head->next;
+    Node *deleteNode = head;
+    head = head->next;
     delete deleteNode;
-    head->prev=NULL;
+    if (head == NULL)
+    {
+        tail = NULL;
+        return;
+    }
+    head->prev = NULL;
 }
 
 int main()
@@ -149,24 +158,24 @@ int main()
     b->next = c;
     c->prev = b;
 
-
     int pos;
-    cout<<"Enter your position"<<" ";
-    cin>>pos;
-    if(pos>=doubly_linked_list_size(head))
+    cout << "Enter your position" << " ";
+    cin >> pos;
+    if (pos >= doubly_linked_list_size(head))
     {
-        cout<<"Invalid position"<<endl;
+        cout << "Invalid position" << endl;
     }
-    else if(pos==0)
+    else if (pos == 0)
     {
-        delete_at_head(head);
+        delete_at_head(head, tail);
     }
-    else if(pos==doubly_linked_list_size(head)-1)
+    else if (pos == doubly_linked_list_size(head) - 1)
     {
-        delete_at_tail(tail);
+        delete_at_tail(head,tail);
     }
-    else{
-        delete_at_position(head,pos);
+    else
+    {
+        delete_at_position(head, pos);
     }
 
     // printing the linked list
