@@ -10,8 +10,8 @@ public:
     Node(int val)
     {
         this->val = val;
-        this->left = left;
-        this->right = right;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
 
